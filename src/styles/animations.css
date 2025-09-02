@@ -18,6 +18,7 @@
   will-change: transform, opacity;
 }
 
+/* Анимация появления */
 @keyframes fadeIn {
   from {
     opacity: 0;

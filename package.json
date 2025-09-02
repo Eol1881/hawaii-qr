@@ -2,7 +2,7 @@
   "name": "hawaii-qr",
   "description": "SPA-приложение - автоматизированная система контроля допуска на мероприятие по QR-коду.",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.83.0",
+    "@yudiel/react-qr-scanner": "^2.3.1",
     "date-fns": "^4.1.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

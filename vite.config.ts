@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import fs from 'node:fs';
 import { URL, fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 
@@ -21,6 +22,14 @@ export default defineConfig({
     }
   },
   server: {
+    host: true,
+    https:
+      process.env.VITE_USE_HTTPS === 'true'
+        ? {
+            key: fs.readFileSync('./certs/localhost+2-key.pem'),
+            cert: fs.readFileSync('./certs/localhost+2.pem')
+          }
+        : undefined,
     proxy:
       process.env.VITE_USE_PROXY === 'true'
         ? {

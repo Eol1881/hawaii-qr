@@ -1,15 +1,19 @@
 import { type FC } from 'react';
-import { Link } from 'react-router';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import { ScannerPage } from '@pages/ScannerPage';
 import { Settings } from '@pages/Settings';
 
+import { IconScan } from '@components/icons/navigation/IconScan';
+import { IconSettings } from '@components/icons/navigation/IconSettings';
+import { PalmsBackground } from '@components/layout/PalmsBackground';
+import { LinkRounded } from '@components/navigation/LinkRounded';
+
 const App: FC = () => {
   return (
-    <div>
-      <div className="font-caption bg-black h-full w-full">
+    <PalmsBackground>
+      <div className="font-caption h-full w-full">
         <ToastContainer
           toastClassName="!font-helvetica"
           position="bottom-left"
@@ -19,26 +23,25 @@ const App: FC = () => {
           closeOnClick
         />
 
-        <div className="fixed bottom-0 bg-green-600 h-16 w-full">
-          <Link to="/" className=" right-[45%] top-[45%]">
-            Сканер
-          </Link>
-
-          <Link to="/settings" className=" top-5 left-5">
-            Настройки
-          </Link>
-        </div>
-
-        <div className="bg-red-300 pb-16 h-screen w-full">
+        <div className="pb-16 min-h-full w-full">
           <Routes>
             <Route path="/" element={<ScannerPage />} />
             <Route path="/settings" element={<Settings />} />
 
             <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>{' '}
+          </Routes>
+        </div>
+
+        <div className="fixed z-30 bottom-0 py-1 h-16 w-full flex items-center justify-center gap-4">
+          <LinkRounded to="/">
+            <IconScan className="w-10 h-10 stroke-inherit fill-none" />
+          </LinkRounded>
+          <LinkRounded to="/settings">
+            <IconSettings className="w-9 h-9 fill-inherit stroke-none" />
+          </LinkRounded>
         </div>
       </div>
-    </div>
+    </PalmsBackground>
   );
 };
 
